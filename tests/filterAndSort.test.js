@@ -2,12 +2,16 @@
 
 const { filterAndSort } = require('../src/filterAndSort');
 
-const users = [
-  { name: 'Dóra', age: 28, active: true},
-  { name: 'Béla', age: 19, active: false},
-  { name: 'Csaba', age: 20, active: true},
-  { name: 'Anna', age: 22, active: true},
-  ];
+const users = require('../src/data');
+
+describe('filterAndSortUsers', () => {
+    test('original input is not modified', () => {
+        const original = [...users];
+        filterAndSort(users);
+
+        expect(users).toEqual(original);
+    })
+});
 
 test('filterAndSort should return active users aged 21 or older, sorted by name', () => {
     const result = filterAndSort(users);
