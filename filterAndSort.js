@@ -5,11 +5,19 @@ const users = [
   { name: 'Anna', age: 22, active: true},
   ];
 
+function filterAndSort(users) {
   const activeUsers = users.filter(user => user.active);
-  console.log(activeUsers);
-  const ageFiltered = activeUsers.filter(user => user.age >= 21);
-  console.log(ageFiltered);
-  const sortbyName = ageFiltered.sort((a, b) => a.name.localeCompare(b.name));
-  console.log(sortbyName);
+  //console.log(activeUsers);
 
-  // half done!
+  const ageFiltered = activeUsers.filter(user => user.age >= 21);
+  //console.log(ageFiltered);
+
+  const sortbyName = [...ageFiltered].sort((a, b) => a.name.localeCompare(b.name));
+  //console.log(sortbyName);
+
+  const result = document.getElementById('result');
+  result.innerHTML = sortbyName.map(user => `<li>${user.name} (${user.age})</li>`).join('');
+}
+
+//filterAndSort(users);
+// half done!
